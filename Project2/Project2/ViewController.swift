@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     var countries = [String]()
     var correctAnswer = 0
     var score = 0
+    var numQuestions = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +42,7 @@ class ViewController: UIViewController {
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         correctAnswer = Int.random(in: 0...2)
-        title = countries[correctAnswer].uppercased()
+        title = countries[correctAnswer].uppercased() + " Current Score: \(score)"
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
@@ -51,7 +52,7 @@ class ViewController: UIViewController {
             title = "Correct"
             score += 1
         } else {
-            title = "Wrong"
+            title = "Wrong! That's the flag of \(countries[sender.tag].capitalized)!"
             score -= 1
         }
         
